@@ -1,0 +1,42 @@
+<div class="container">
+
+  {{#if posts.length}}
+     {{#each posts}}
+         <div class="row mt35">
+           <div class="col s12 ">
+             <div class="card">
+               <div class="card-image">   
+                 <img src="{{img}}" style="height: 150px; object-fit: cover;">
+                 <span class="card-title">{{title}}</span>
+               </div>
+               <div class="card-content">
+                 <h5>
+                   <i><b>Author:</b> </i><b>{{author}}</b>
+                   <br>
+                   <br>
+                 </h5>
+                <ul class="collapsible">
+                   <li>
+                     <div class="collapsible-header">View content</div>
+                     <div class="collapsible-body">{{content}}</div>
+                   </li>
+                </ul>
+               </div>
+               <div class="card-action">
+                   <div class="d-flex">
+                           {{#if isAccepted}}
+                             <form action="/admin/remove" METHOD="POST"><input type="hidden" name="postId" value="{{postId}}"> <button class="waves-effect waves-light btn red">DELETE</button> </form>
+                           {{else}}
+                             <form action="/admin/accept" METHOD="POST"><input type="hidden" name="postId" value="{{postId}}"> <button class="waves-effect waves-light btn">Accept</button> </form>
+                             <form action="/admin/reject" METHOD="POST"><input type="hidden" name="postId" value="{{postId}}"> <button class="waves-effect waves-light btn red">Reject</button> </form>
+                           {{/if}}
+                   </div>
+               </div>
+             </div>
+           </div>
+         </div>
+     {{/each}}
+     {{else}}
+    <h2>Posts not added yet.</h2>
+  {{/if}}
+  </div>

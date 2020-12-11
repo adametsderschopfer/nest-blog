@@ -1,0 +1,42 @@
+<ul id="slide-out" class="sidenav sidenav-fixed">
+  <li><div class="progress"><div class="indeterminate"></div></div></li>
+</ul>
+<a href="#" data-target="slide-out" class="btn"><i class="material-icons">menu</i></a>
+
+<main>
+  <div class="container">
+    <h1>Posts: </h1>
+    {{#if posts.length}}
+      {{#each posts}}
+        {{#if isAccepted}}
+        <div class="row mt35">
+          <div class="col s12 ">
+            <div class="card">
+              <div class="card-image">
+                <img src="{{img}}" >
+                <span class="card-title">{{title}}</span>
+              </div>
+              <div class="card-content">
+                <h6 style="margin: 0;">
+                  <i><b>Author:</b> </i><b>{{author}}</b>
+
+                  <br>
+                  <br>
+                </h6>
+                <ul class="collapsible">
+                  <li>
+                    <div class="collapsible-header" data-postId="{{postId}}" data-isOpen="false">View content &nbsp; | &nbsp; <b>Views:</b> <b id="view">{{views}}</b></div>
+                    <div class="collapsible-body" data-postId="{{postId}}"><!-- content --></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      {{/each}}
+    {{else}}
+      <h2>Posts not added yet.</h2>
+    {{/if}}
+  </div>
+</main>
